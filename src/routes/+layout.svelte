@@ -21,19 +21,6 @@
 
 <Card />
 
-<nav>
-	<a aria-current={$page.url.pathname === '/edge' ? 'true' : undefined} href="/edge">edge</a>
-	<a
-		aria-current={$page.url.pathname === '/edge/streaming' ? 'true' : undefined}
-		href="/edge/streaming">(streamed)</a
-	>
-	/
-	<a aria-current={$page.url.pathname === '/node' ? 'true' : undefined} href="/node">node</a>
-	<a
-		aria-current={$page.url.pathname === '/node/streaming' ? 'true' : undefined}
-		href="/node/streaming">(streamed)</a
-	>
-</nav>
 
 {#key $page.url.pathname}
 	<main in:fade>

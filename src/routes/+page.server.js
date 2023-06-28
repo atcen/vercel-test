@@ -2,5 +2,5 @@ import { redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export function load() {
-	throw redirect(308, '/edge')
+	throw redirect(308, '/node')
 }

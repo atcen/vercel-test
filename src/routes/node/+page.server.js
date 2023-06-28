@@ -1,3 +1,5 @@
+import { sleep } from '$lib/utils';
+
 let cold = true;
 
 /** @type {import('./$types').PageServerLoad} */
@@ -9,8 +11,9 @@ export function load(event) {
 	const city = decodeURIComponent(event.request.headers.get('x-vercel-ip-city') ?? 'unknown');
 
 	return {
-		ip,
-		city,
+		streamed: {
+			details: sleep({ ip, city }, 1000)
+		},
 		now: new Date().toISOString(),
 		cold: was_cold
 	};
