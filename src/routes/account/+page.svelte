@@ -1,7 +1,8 @@
 <!-- src/routes/account/+page.svelte -->
 <script lang="ts">
+  type SubmitFunction = () => void;
 
-  import { enhance, type SubmitFunction } from '$app/forms'
+  import { enhance } from '$app/forms'
 
   export let data
   export let form
