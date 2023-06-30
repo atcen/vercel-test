@@ -1,19 +1,23 @@
-<script>
-	import { scale } from 'svelte/transition';
-	import Details from '$lib/Details.svelte';
+<!-- src/routes/+page.svelte -->
+<script lang="ts">
+	import { Auth } from '@supabase/auth-ui-svelte'
+	import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data
 </script>
 
-<h1><span>Hello from Node!</span></h1>
+<svelte:head>
+	<title>User Management</title>
+</svelte:head>
 
-<div class="info">
-	{#await data.streamed.details}
-		<p>streaming delayed data from the server...</p>
-	{:then details}
-		<div in:scale={{ start: 0.9 }}>
-			<Details city={details.city} ip={details.ip} />
-		</div>
-	{/await}
+<div class="row flex-center flex">
+	<div class="col-6 form-widget">
+		<Auth
+			supabaseClient={data.supabase}
+			view="magic_link"
+			redirectTo={`${data.url}/auth/callback`}
+			showLinks={false}
+			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+		/>
+	</div>
 </div>
